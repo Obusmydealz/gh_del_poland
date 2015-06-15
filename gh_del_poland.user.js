@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        gh_del_poland
 // @namespace   gh_space
-// @include     http://geizhals.de/*
+// @include     http://geizhals.de/?bpnew=*
 // @version     1
 // @grant       none
 // ==/UserScript==
