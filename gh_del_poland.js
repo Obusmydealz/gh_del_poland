@@ -1,4 +1,3 @@
-//Einfügen erlauben
 // ==UserScript==
 // @name        gh_del_poland
 // @namespace   gh_space
