@@ -18,10 +18,11 @@ var curr_year = new Date().getFullYear();
 
 for(i=spans_length-1;i>=0;i=i-1)
   { 
-    var delete_item = false;
-    var curr_len = spans[i].innerHTML.length;
+    
     if (spans[i].innerHTML.substring(6,10)==curr_year){
       counter++;
+      var delete_item = false;
+      var curr_len = spans[i].innerHTML.length;
       
       if(parent==-1){
         parent=spans[i].parentNode;
@@ -33,6 +34,7 @@ for(i=spans_length-1;i>=0;i=i-1)
         elem = bad_list[index];
         if(spans[i].innerHTML.substring(curr_len-elem.length,curr_len)==elem){
           delete_item=true;
+          break;
         }
       }
 
