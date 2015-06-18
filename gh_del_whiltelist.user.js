@@ -20,7 +20,6 @@ var curr_year = new Date().getFullYear();
 
 for(i=spans_length-1;i>=0;i=i-1)
   { 
-    //console.log(i);
     if (spans[i].innerHTML.substring(6,10)==curr_year){
       var delete_item = true;
       var curr_len = spans[i].innerHTML.length;
@@ -32,6 +31,8 @@ for(i=spans_length-1;i>=0;i=i-1)
         br_length=br_list.length;
       }
     
+    
+      //Check white_list
       for(index=0;index<white_list.length;index++){
         elem = white_list[index];
         if(spans[i].innerHTML.substring(curr_len-elem.length,curr_len).toLowerCase()==elem.toLowerCase()){
@@ -40,6 +41,7 @@ for(i=spans_length-1;i>=0;i=i-1)
         }
       }
       
+      //Check black_list
       for(index=0;index<black_list.length;index++){
         elem = black_list[index];
         if(spans[i].innerHTML.substring(curr_len-elem.length,curr_len).toLowerCase()==elem.toLowerCase()){
@@ -48,7 +50,7 @@ for(i=spans_length-1;i>=0;i=i-1)
         }
       }
       
-
+      // Delete elements
       if (delete_item){
          parent.removeChild(br_list[br_length-counter]);
          parent.removeChild(spans[i]);
