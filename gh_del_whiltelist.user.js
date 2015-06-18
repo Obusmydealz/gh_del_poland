@@ -7,7 +7,7 @@
 // @grant       none
 // ==/UserScript==
 
-var white_list = ['.de', '-de', 'computeruniverse.net', 'BIT-electronix', 'talk-point', 'Cyberport', 'Multimedia-Handels GmbH', 'Mindfactory', 'XXXLutz', 'HardwareRogge', 'Onlineshop', 'Online-Shop', 'Compuland', 'ATELC Abholshop', 'ATELCO','Rakuten', 'Allyouneed.com'];
+var white_list = ['.de', '-de', 'computeruniverse.net', 'BIT-electronix', 'talk-point', 'Cyberport', 'Multimedia-Handels GmbH', 'Mindfactory', 'XXXLutz', 'HardwareRogge', 'Onlineshop', 'Online-Shop', 'Compuland', 'Abholshop', 'ATELCO','Rakuten', 'Allyouneed.com'];
 
 
 var spans = document.getElementsByTagName('span');
