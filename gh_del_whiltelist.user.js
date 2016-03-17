@@ -52,8 +52,10 @@ for(i=spans_length-1;i>=0;i=i-1)
       
       // Delete elements
       if (delete_item){
-         parent.removeChild(br_list[br_length-counter]);
-         parent.removeChild(spans[i]);
+         //parent.removeChild(br_list[br_length-counter]);
+         //parent.removeChild(spans[i]);
+        spans[i].style.display = "none";
+        br_list[br_length-counter].style.display = "none"
       }
     }
   }
