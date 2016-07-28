@@ -3,18 +3,51 @@
 // @namespace   gh_space
 // @include     http://geizhals.de/?bpnew=*
 // @include     http://geizhals.de/?thres=*
+// @include     https://geizhals.de/?bpnew=*
+// @include     https://geizhals.de/?thres=*
 // @version     1
 // @grant       none
 // ==/UserScript==
 
 var bad_list = ['.pl','Polska'];
 
-var spans = document.getElementsByTagName('span');
+var spans = document.getElementsByTagName('span.notrans');
 var br_list = [];
 var parent=-1;
+var modified=false;
 var counter = 0;
 var spans_length = spans.length;
 var curr_year = new Date().getFullYear();
+
+if(parent==-1){
+    br_list=document.getElementsByTagName('br');
+    parent=br_list[0].parentNode;
+    br_length=br_list.length;
+}
+
+if (spans_length==0) {
+    console.log('Modify HTML DOM.');
+    var tmp = document.createElement('div');
+    for (var i=0;i<parent.childNodes.length;i++) {
+        var item = parent.childNodes.item(i);
+        if (!(item.nodeType === 1 && item.nodeName === 'SCRIPT')) {
+          var cloned_node = item.cloneNode();
+          cloned_node.innerHTML = item.innerHTML;
+          tmp.appendChild(cloned_node);
+        }
+    }
+    var lines = tmp.innerHTML.split('<br>').filter(function(x){
+                  return x && x.trim() != ''
+              });
+    tmp.innerHTML = lines.map(function(x){
+                  return '<span class="notrans">' + x.trim() + '<br></span>'
+              }).join('\n');
+    parent.innerHTML = tmp.innerHTML;
+    spans = document.querySelectorAll('span.notrans');
+    spans_length = spans.length;
+    modified = true;
+    console.log('Done.');
+}
 
 for(i=spans_length-1;i>=0;i=i-1)
   { 
@@ -23,12 +56,15 @@ for(i=spans_length-1;i>=0;i=i-1)
       counter++;
       var delete_item = false;
       var curr_len = spans[i].innerHTML.length;
-      
-      if(parent==-1){
-        parent=spans[i].parentNode;
-        br_list=parent.getElementsByTagName('br');
-        br_length=br_list.length;
+      if (modified){
+          curr_len -= 4;
       }
+      
+      // if(parent==-1){
+        // parent=spans[i].parentNode;
+        // br_list=parent.getElementsByTagName('br');
+        // br_length=br_list.length;
+      // }
     
       for(index=0;index<bad_list.length;index++){
         elem = bad_list[index];
@@ -42,7 +78,9 @@ for(i=spans_length-1;i>=0;i=i-1)
          //parent.removeChild(br_list[br_length-counter]);
          //parent.removeChild(spans[i]);
         spans[i].style.display = "none";
-        br_list[br_length-counter].style.display = "none";
+        if(!modified){
+            br_list[br_length-counter].style.display = "none";
+        }
       }
     }
-  }
+}
