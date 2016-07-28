@@ -9,7 +9,7 @@
 // @grant       none
 // ==/UserScript==
 
-var white_list = ['.de', '-de', 'alternate', 'computeruniverse.net', 'BIT-electronix', 'talk-point', 'Cyberport', 'Multimedia-Handels GmbH', 'Mindfactory', 'XXXLutz', 'HardwareRogge', 'Onlineshop', 'Online-Shop', 'Compuland', 'Abholshop', 'ATELCO','Rakuten', 'Allyouneed.com','check24','DriveCity','VibuOnline','Elektronik','direkt','versand'];
+var white_list = ['.de', '-de', 'alternate', 'computeruniverse.net', 'BIT-electronix', 'talk-point', 'Cyberport', 'GmbH', 'Mindfactory', 'XXXLutz', 'HardwareRogge', 'Onlineshop', 'Online-Shop', 'Compuland', 'Abholshop', 'ATELCO','Rakuten', 'Allyouneed.com','check24','DriveCity','VibuOnline','Elektronik','direkt','exklusiv','handel','versand'];
 var black_list = [];
 
 
